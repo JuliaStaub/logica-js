@@ -21,6 +21,7 @@ function verificarChute() {
     if (chute == numeroSecreto) {
         exibirTextoNaTela('h1', 'Acertou!');
         exibirTextoNaTela('p', mensagemTentativas);
+        document.getElementById('reiniciar').removeAttribute('disabled');
     } else if (chute > numeroSecreto) {
         exibirTextoNaTela('p', 'O número secreto é menor');
     } else {
@@ -38,4 +39,12 @@ function limparCampo() {
 
 function gerarNumeroAleatorio() {
     return parseInt(Math.random() * 10 + 1);
+}
+
+function reiniciarJogo() {
+    numeroSecreto = gerarNumeroAleatorio();
+    limparCampo();
+    tentativas = 1;
+    exibirMensagemInicial();
+    document.getElementById("reiniciar").setAttribute('disabled', true);
 }
